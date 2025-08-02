@@ -1,0 +1,36 @@
+<!-- chat.component.html -->
+<div class="chat-container">
+  <div class="chat-messages" #chatMessagesContainer>
+    <app-message
+      *ngFor="let message of messages"
+      [text]="message.text"
+      [isUser]="message.isUser"
+      [isTyping]="message.isTyping ?? false">
+    </app-message>
+
+    <!-- Typing Indicator -->
+    <div class="typing-indicator" *ngIf="isLoading">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input
+      type="text"
+      placeholder="Type your message..."
+      [(ngModel)]="currentMessage"
+      (keyup.enter)="sendMessage()"
+      [disabled]="isLoading"
+    />
+
+    <button class="mic-btn" title="Speak" (click)="startVoiceInput()" type="button">
+      🎤
+    </button>
+
+    <button class="send-btn" (click)="sendMessage()" [disabled]="isLoading">
+      Send
+    </button>
+  </div>
+</div>

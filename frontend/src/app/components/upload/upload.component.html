@@ -1,0 +1,18 @@
+<div class="upload-container">
+  <div class="upload-card">
+    <h2>📄 Upload Your Document</h2>
+
+    <div class="upload-drop-area" (drop)="onFileDrop($event)" (dragover)="onDragOver($event)">
+      <p *ngIf="!selectedFile">Drag & Drop file here or click to browse</p>
+      <p *ngIf="selectedFile">Selected: <strong>{{ selectedFile.name }}</strong></p>
+    </div>
+
+    <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+    <button class="upload-btn" (click)="fileInput.click()">Browse File</button>
+
+    <button class="submit-btn" (click)="onUpload()" [disabled]="!selectedFile">Upload</button>
+
+    <div *ngIf="uploadStatus" class="status-message">{{ uploadStatus }}</div>
+    <div *ngIf="uploadError" class="error-message">{{ uploadError }}</div>
+  </div>
+</div>

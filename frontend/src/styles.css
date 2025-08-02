@@ -1,0 +1,40 @@
+/* styles.css - Global fix for chat and upload stretching */
+app-chat, app-upload {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Light blue gradient */
+  background-attachment: fixed;
+  background-size: cover;
+  color: #333;
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(#b8c6db 1px, transparent 0),
+                    radial-gradient(#f5f7fa 1px, transparent 0);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  opacity: 0.05;
+  z-index: -1;
+  animation: floatBg 40s linear infinite;
+}
+
+@keyframes floatBg {
+  0% { background-position: 0 0, 20px 20px; }
+  100% { background-position: 1000px 500px, 1020px 520px; }
+}

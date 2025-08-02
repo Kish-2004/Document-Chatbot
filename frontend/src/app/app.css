@@ -1,0 +1,73 @@
+/* src/app/app.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Global styles for html and body */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, #c9d6ff, #e2e2e2);
+  background-attachment: fixed;
+  color: #333;
+}
+
+/* Subtle floating background animation */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(#9ab3f5 1px, transparent 0), radial-gradient(#b692f6 1px, transparent 0);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  opacity: 0.06;
+  z-index: -1;
+  animation: floatBackground 30s linear infinite;
+}
+
+@keyframes floatBackground {
+  from {
+    background-position: 0 0, 15px 15px;
+  }
+  to {
+    background-position: 1000px 500px, 1015px 515px;
+  }
+}
+
+/* Root Angular app container */
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* Main content layout that holds router-outlet views like chat/upload */
+.app-main-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  width: 100vw;
+  max-width: none;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Responsive: reduce padding on smaller screens */
+@media (max-width: 768px) {
+  .app-main-content {
+    padding: 10px;
+  }
+}

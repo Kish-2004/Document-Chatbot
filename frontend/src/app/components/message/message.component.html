@@ -1,0 +1,10 @@
+<div class="message-bubble" [ngClass]="{'user-message': isUser, 'bot-message': !isUser}">
+  <div class="icon" *ngIf="!isUser">🤖</div>
+
+  <div class="message-content">
+    <span *ngIf="isTyping" class="typing-indicator">Typing...</span>
+    <p *ngIf="!isTyping">{{ text }}</p>
+  </div>
+
+  <div class="icon" *ngIf="isUser">👤</div>
+</div>
